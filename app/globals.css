@@ -1,26 +1,181 @@
 @import "tailwindcss";
 
+/* Dark mode piloté par la classe .dark sur <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/*  Palette scandinave / norvégienne : crème, bois, ambre-terracotta   */
+/* ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Fonds & surfaces */
+  --background: #faf6f0; /* crème papier */
+  --surface: #f3ebe0; /* carte, légèrement plus chaud */
+  --surface-2: #ece1d3; /* survol / élévation */
+  --border: #e4d8c7; /* trait bois clair */
+
+  /* Textes */
+  --foreground: #2a2320; /* brun profond, presque noir chaud */
+  --muted: #6f6154; /* taupe */
+  --subtle: #94847410; /* voile discret */
+
+  /* Accent chaud (ambre / terracotta / bois) */
+  --accent: #c26b3d;
+  --accent-strong: #a9572e;
+  --accent-soft: #ecd9c6; /* fond d'accent doux */
+  --wood: #8a6d52; /* bois moyen, tons secondaires */
+}
+
+.dark {
+  --background: #1b1714; /* brun-noir chaud */
+  --surface: #241f1b;
+  --surface-2: #2e2822;
+  --border: #3a322b;
+
+  --foreground: #efe7dc;
+  --muted: #b3a493;
+  --subtle: #ffffff08;
+
+  --accent: #e08a4f; /* ambre plus lumineux sur fond sombre */
+  --accent-strong: #eca06a;
+  --accent-soft: #33261c;
+  --wood: #b89877;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-wood: var(--wood);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-anton);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Grain de papier très léger pour la chaleur scandinave */
+.paper-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Contenu Markdown du blog */
+.markdown {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--foreground);
+}
+.markdown > * + * {
+  margin-top: 1.15em;
+}
+.markdown h2 {
+  font-family: var(--font-display), Impact, sans-serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.1;
+  margin-top: 2em;
+  margin-bottom: 0.4em;
+}
+.markdown h3 {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 1.6em;
+  margin-bottom: 0.3em;
+}
+.markdown a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.markdown strong {
+  font-weight: 600;
+}
+.markdown ul,
+.markdown ol {
+  padding-left: 1.4em;
+}
+.markdown ul {
+  list-style: disc;
+}
+.markdown ol {
+  list-style: decimal;
+}
+.markdown li::marker {
+  color: var(--accent);
+}
+.markdown blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1em;
+  color: var(--muted);
+  font-style: italic;
+}
+.markdown code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.9em;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+}
+.markdown pre {
+  background: var(--surface-2);
+  padding: 1em 1.2em;
+  border-radius: 12px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+.markdown pre code {
+  background: transparent;
+  padding: 0;
+}
+.markdown img {
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Barre de défilement discrète */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--wood);
 }
