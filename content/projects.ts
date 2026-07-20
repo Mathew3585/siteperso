@@ -14,7 +14,8 @@ export interface Project {
   description: Record<Locale, string[]>; // paragraphes
   stack: string[];
   image?: string; // vignette (sinon dégradé)
-  video?: string; // lien vidéo (YouTube...)
+  video?: string; // lien vidéo YouTube
+  videoFile?: string; // vidéo hébergée en local (ex: /images/projects/x/teaser.mp4)
   gallery?: string[]; // galerie d'images (carrousel sur la page détail)
   links?: { label: string; href: string }[];
 }
@@ -232,6 +233,48 @@ export const projects: Project[] = [
       "/images/projects/gestion-des-prix/3.png",
       "/images/projects/gestion-des-prix/4.png",
       "/images/projects/gestion-des-prix/5.png",
+    ],
+  },
+  {
+    slug: "color-collapse",
+    title: "Color Collapse",
+    year: "2023",
+    categories: ["game"],
+    role: { fr: "Développeur (Lodenn Studio)", en: "Developer (Lodenn Studio)" },
+    summary: {
+      fr: "Mon premier jeu mobile publié : un puzzle où il faut fusionner les cubes de même couleur pour terminer chaque niveau. Plus de 3 500 téléchargements.",
+      en: "My first published mobile game: a puzzle where you merge cubes of the same colour to clear each level. Over 3,500 downloads.",
+    },
+    description: {
+      fr: [
+        "Color Collapse est un puzzle game mobile sorti sous le label Lodenn Studio. Le principe est simple à comprendre mais difficile à maîtriser : fusionner les cubes de même couleur jusqu'à n'en laisser qu'un seul de chaque teinte sur le plateau.",
+        "La difficulté monte progressivement au fil des niveaux, avec de nouveaux obstacles et des règles spéciales qui obligent à anticiper ses fusions plutôt qu'à jouer au hasard. L'ensemble est habillé d'une direction artistique épurée, d'animations fluides et d'une musique calme, pour un jeu de réflexion qui reste détendu.",
+        "C'était mon premier jeu publié sur mobile, donc aussi ma première confrontation à tout ce qui entoure le développement : le build, la publication sur le store, les retours des joueurs et les mises à jour. Il a dépassé les 3 500 téléchargements.",
+      ],
+      en: [
+        "Color Collapse is a mobile puzzle game released under the Lodenn Studio label. The concept is easy to grasp but hard to master: merge cubes of the same colour until only one of each shade is left on the board.",
+        "Difficulty ramps up across levels, with new obstacles and special rules that force you to plan your merges rather than play at random. It is wrapped in a clean art direction, smooth animations and calm music, for a thinking game that stays relaxing.",
+        "It was my first game published on mobile, so also my first encounter with everything around development itself: builds, store publishing, player feedback and updates. It passed 3,500 downloads.",
+      ],
+    },
+    stack: ["Unity", "C#", "Android", "Google Play", "Level design"],
+    image: "/images/projects/color-collapse/1.jpg",
+    videoFile: "/images/projects/color-collapse/teaser.mp4",
+    gallery: [
+      "/images/projects/color-collapse/1.jpg",
+      "/images/projects/color-collapse/2.jpg",
+      "/images/projects/color-collapse/3.jpg",
+      "/images/projects/color-collapse/4.jpg",
+      "/images/projects/color-collapse/5.jpg",
+      "/images/projects/color-collapse/6.jpg",
+      "/images/projects/color-collapse/7.jpg",
+      "/images/projects/color-collapse/8.jpg",
+    ],
+    links: [
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.LodennStudio.MergeColor",
+      },
     ],
   },
   {

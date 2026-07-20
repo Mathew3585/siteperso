@@ -92,12 +92,19 @@ export default async function ProjectPage({
                   images={project.gallery}
                   alt={project.title}
                   video={
-                    project.video
+                    project.videoFile
                       ? {
-                          id: youtubeId(project.video),
+                          kind: "file",
+                          src: project.videoFile,
                           poster: project.image ?? project.gallery[0],
                         }
-                      : undefined
+                      : project.video
+                        ? {
+                            kind: "youtube",
+                            id: youtubeId(project.video),
+                            poster: project.image ?? project.gallery[0],
+                          }
+                        : undefined
                   }
                 />
               ) : project.video ? (

@@ -5,8 +5,12 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
+export type GalleryVideo =
+  | { kind: "youtube"; id: string; poster: string }
+  | { kind: "file"; src: string; poster: string };
+
 type Slide =
-  | { type: "video"; id: string; poster: string }
+  | { type: "video"; video: GalleryVideo }
   | { type: "image"; src: string };
 
 export function Gallery({
@@ -16,10 +20,10 @@ export function Gallery({
 }: {
   images: string[];
   alt: string;
-  video?: { id: string; poster: string };
+  video?: GalleryVideo;
 }) {
   const slides: Slide[] = [
-    ...(video ? [{ type: "video", id: video.id, poster: video.poster } as Slide] : []),
+    ...(video ? [{ type: "video", video } as Slide] : []),
     ...images.map((src) => ({ type: "image", src }) as Slide),
   ];
   const [index, setIndex] = useState(0);
@@ -40,9 +44,7 @@ export function Gallery({
             transition={{ duration: 0.25 }}
           >
             {current.type === "video" ? (
-              <div className="relative aspect-[16/9] w-full">
-                <VideoSlide id={current.id} poster={current.poster} title={alt} />
-              </div>
+              <VideoSlide video={current.video} title={alt} />
             ) : (
               <Image
                 src={current.src}
@@ -84,7 +86,7 @@ export function Gallery({
               )}
             >
               <Image
-                src={s.type === "video" ? s.poster : s.src}
+                src={s.type === "video" ? s.video.poster : s.src}
                 alt=""
                 fill
                 sizes="96px"
@@ -107,39 +109,55 @@ export function Gallery({
   );
 }
 
-function VideoSlide({ id, poster, title }: { id: string; poster: string; title: string }) {
+function VideoSlide({ video, title }: { video: GalleryVideo; title: string }) {
   const [playing, setPlaying] = useState(false);
 
-  if (playing) {
+  // Vidéo hébergée en local : lecteur natif, on garde le ratio du fichier.
+  if (video.kind === "file") {
     return (
-      <iframe
-        className="absolute inset-0 h-full w-full"
-        src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`}
-        title={title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      />
+      <video
+        controls
+        playsInline
+        preload="metadata"
+        poster={video.poster}
+        className="mx-auto block h-auto max-h-[70vh] w-full bg-black"
+      >
+        <source src={video.src} type="video/mp4" />
+      </video>
     );
   }
 
+  // YouTube : on ne charge l'iframe qu'au clic.
   return (
-    <button
-      type="button"
-      onClick={() => setPlaying(true)}
-      aria-label={`Lire la vidéo : ${title}`}
-      className="group absolute inset-0 h-full w-full"
-    >
-      {poster && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={poster} alt={title} className="h-full w-full object-cover" />
+    <div className="relative aspect-[16/9] w-full">
+      {playing ? (
+        <iframe
+          className="absolute inset-0 h-full w-full"
+          src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setPlaying(true)}
+          aria-label={`Lire la vidéo : ${title}`}
+          className="group absolute inset-0 h-full w-full"
+        >
+          {video.poster && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={video.poster} alt={title} className="h-full w-full object-cover" />
+          )}
+          <span className="absolute inset-0 bg-black/25 transition-colors group-hover:bg-black/10" />
+          <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-transform group-hover:scale-110">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </button>
       )}
-      <span className="absolute inset-0 bg-black/25 transition-colors group-hover:bg-black/10" />
-      <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white shadow-lg transition-transform group-hover:scale-110">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-          <path d="M8 5v14l11-7z" />
-        </svg>
-      </span>
-    </button>
+    </div>
   );
 }
 
