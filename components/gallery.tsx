@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +30,18 @@ export function Gallery({
   const count = slides.length;
   const go = (dir: number) => setIndex((i) => (i + dir + count) % count);
   const current = slides[index];
+
+  // Fait suivre la bande de miniatures : la vignette active est recentrée.
+  const stripRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const strip = stripRef.current;
+    const active = strip?.children[index] as HTMLElement | undefined;
+    if (!strip || !active) return;
+    strip.scrollTo({
+      left: Math.max(0, active.offsetLeft - strip.clientWidth / 2 + active.clientWidth / 2),
+      behavior: "smooth",
+    });
+  }, [index]);
 
   return (
     <div>
@@ -73,7 +85,7 @@ export function Gallery({
 
       {/* Miniatures */}
       {count > 1 && (
-        <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+        <div ref={stripRef} className="mt-3 flex gap-2 overflow-x-auto pb-1">
           {slides.map((s, i) => (
             <button
               key={i}
