@@ -274,10 +274,46 @@ const allProjects: Project[] = [
     ],
   },
   {
+    slug: "long-to-short",
+    title: "LongToShort",
+    year: "2026",
+    featured: true,
+    categories: ["ai", "app"],
+    role: { fr: "Projet personnel, développé seul", en: "Personal project, built solo" },
+    summary: {
+      fr: "Une alternative locale à OpusClip : l'application découpe une vidéo longue en clips verticaux prêts à publier, avec sous-titres, suivi de visage et titres générés. Tout tourne sur le PC, sans abonnement.",
+      en: "A local alternative to OpusClip: the app turns a long video into ready-to-post vertical clips, with subtitles, face tracking and generated titles. Everything runs on your own machine, no subscription.",
+    },
+    description: {
+      fr: [
+        "Les outils qui transforment une vidéo longue en shorts pour les réseaux sociaux, comme OpusClip, sont payants et facturés au mois. Je ne voulais pas m'abonner, donc j'ai construit ma propre version, entièrement locale, en m'appuyant sur Ollama pour faire tourner les modèles de langage directement sur ma machine.",
+        "On donne à l'application une vidéo longue, soit via un lien YouTube, soit depuis un fichier déjà présent sur le PC. Elle analyse le contenu, identifie les passages intéressants et en sort automatiquement une série de clips verticaux prêts à publier. Sur une vidéo de 22 minutes, elle génère par exemple 18 clips.",
+        "Chaque clip est livré fini : recadrage vertical avec suivi du visage pour que la personne reste bien dans le cadre, sous-titres incrustés avec mise en valeur des mots-clés, découpe des silences, et un titre, une description et des hashtags générés pour la publication. Un score est attribué à chaque clip pour faire remonter les moments les plus percutants en premier.",
+        "J'ai ensuite ajouté une option de transcription via une API cloud, en complément du traitement local. Le local reste gratuit et respecte la confidentialité des vidéos, tandis que l'API offre une transcription plus précise, ce qui améliore la qualité des sous-titres et le repérage des meilleurs moments. L'utilisateur choisit selon ce qui compte le plus pour lui.",
+        "Le traitement s'appuie sur le GPU de la machine pour rester rapide malgré la charge. C'est un projet que j'ai mené seul début 2026, de l'analyse vidéo jusqu'à l'interface.",
+      ],
+      en: [
+        "Tools that turn a long video into social media shorts, like OpusClip, are paid and billed monthly. I did not want a subscription, so I built my own fully local version, using Ollama to run the language models directly on my machine.",
+        "You hand the app a long video, either through a YouTube link or from a file already on the PC. It analyses the content, spots the interesting passages and automatically produces a series of ready-to-post vertical clips. On a 22 minute video, it generates 18 clips for example.",
+        "Each clip comes out finished: vertical reframing with face tracking so the speaker stays in frame, burned-in subtitles with keyword highlighting, silence trimming, plus a generated title, description and hashtags for publishing. Every clip gets a score so the most striking moments surface first.",
+        "I then added an optional cloud API for transcription, alongside the local pipeline. Local stays free and keeps videos private, while the API gives more accurate transcription, which improves both subtitle quality and the detection of the best moments. The user picks whichever matters most to them.",
+        "Processing leans on the machine's GPU to stay fast despite the workload. I built this one solo in early 2026, from the video analysis all the way to the interface.",
+      ],
+    },
+    stack: ["Ollama", "LLM local", "GPU", "Transcription", "Traitement vidéo", "Sous-titres"],
+    image: "/images/projects/long-to-short/1.png",
+    gallery: [
+      "/images/projects/long-to-short/1.png",
+      "/images/projects/long-to-short/2.png",
+      "/images/projects/long-to-short/3.png",
+      "/images/projects/long-to-short/4.png",
+      "/images/projects/long-to-short/5.png",
+    ],
+  },
+  {
     slug: "gestion-des-prix",
     title: "Gestion des prix",
     year: "2026",
-    featured: true,
     categories: ["app"],
     role: { fr: "Développement & mise en production", en: "Development & deployment" },
     summary: {
