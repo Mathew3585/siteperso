@@ -36,7 +36,7 @@ export const categoryLabels: Record<ProjectCategory, LocalizedText> = {
  * numérotées 1.jpg, 2.jpg, ... (fichiers d'origine, non compressés).
  * `image` = vignette de la carte, `gallery` = carrousel de la page détail.
  */
-export const projects: Project[] = [
+const allProjects: Project[] = [
   {
     slug: "pirate-experience",
     title: "Pirate Experience",
@@ -471,6 +471,23 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+/**
+ * Année de référence d'un projet pour le tri.
+ * Gère aussi les périodes ("2025 - 2026" renvoie 2026, l'année la plus récente).
+ */
+function sortYear(year: string): number {
+  const years = year.match(/\d{4}/g);
+  return years ? Math.max(...years.map(Number)) : 0;
+}
+
+/**
+ * Projets triés du plus récent au plus ancien.
+ * À année égale, l'ordre du tableau ci-dessus est conservé (tri stable).
+ */
+export const projects: Project[] = [...allProjects].sort(
+  (a, b) => sortYear(b.year) - sortYear(a.year)
+);
 
 export function getFeaturedProjects(): Project[] {
   return projects.filter((p) => p.featured);
