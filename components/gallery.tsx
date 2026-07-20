@@ -39,17 +39,19 @@ export function Gallery({
     const active = strip?.children[index] as HTMLElement | undefined;
     if (!strip || !active) return;
 
+    // Mesures à l'écran : fiables quel que soit l'ancêtre positionné.
+    const strip_ = strip.getBoundingClientRect();
+    const active_ = active.getBoundingClientRect();
     const margin = 12;
-    const left = active.offsetLeft;
-    const right = left + active.offsetWidth;
-    const viewLeft = strip.scrollLeft;
-    const viewRight = viewLeft + strip.clientWidth;
 
-    if (left < viewLeft + margin) {
-      strip.scrollTo({ left: Math.max(0, left - margin), behavior: "smooth" });
-    } else if (right > viewRight - margin) {
-      strip.scrollTo({ left: right - strip.clientWidth + margin, behavior: "smooth" });
+    if (active_.left < strip_.left + margin) {
+      // déborde à gauche : on ramène juste ce qu'il faut
+      strip.scrollBy({ left: active_.left - strip_.left - margin, behavior: "smooth" });
+    } else if (active_.right > strip_.right - margin) {
+      // déborde à droite
+      strip.scrollBy({ left: active_.right - strip_.right + margin, behavior: "smooth" });
     }
+    // sinon : la vignette est déjà visible, on ne touche à rien
   }, [index]);
 
   return (
