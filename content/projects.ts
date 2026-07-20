@@ -26,7 +26,7 @@ export const categoryLabels: Record<ProjectCategory, LocalizedText> = {
   xr: { fr: "AR / VR / Simulation", en: "AR / VR / Simulation" },
   ai: { fr: "IA / LLM", en: "AI / LLM" },
   hardware: { fr: "Hardware / DIY", en: "Hardware / DIY" },
-  app: { fr: "Application / Client", en: "App / Client work" },
+  app: { fr: "Application", en: "App" },
 };
 
 /**
@@ -270,6 +270,42 @@ const allProjects: Project[] = [
       {
         label: "Unity Asset Store",
         href: "https://assetstore.unity.com/packages/tools/utilities/ghostscriptremover-305607",
+      },
+    ],
+  },
+  {
+    slug: "basilic",
+    title: "Basilic",
+    year: "2026",
+    categories: ["app"],
+    role: { fr: "Projet open source, développé seul", en: "Open source project, built solo" },
+    summary: {
+      fr: "Un minuteur Pomodoro pensé pour se faire oublier : il tient dans un coin de l'écran, ne coupe jamais le travail, et ne demande ni compte ni connexion. Open source sous licence MIT.",
+      en: "A Pomodoro timer designed to be forgotten: it sits in a corner of the screen, never interrupts your work, and asks for no account or connection. Open source under the MIT license.",
+    },
+    description: {
+      fr: [
+        "Basilic est un minuteur Pomodoro léger, conçu autour d'une idée simple : un minuteur ne doit jamais devenir une distraction de plus. Il tient dans un coin de l'écran et se fait oublier. Aucun compte, aucune télémétrie, et toutes les données restent sur la machine.",
+        "Les durées de travail et de pause sont réglables, avec un enchaînement automatique travail vers pause vers travail, et une pause longue de 15 minutes déclenchée toutes les quatre sessions. Un suivi d'objectif quotidien affiche les sessions terminées. Chaque session peut porter sa propre liste de tâches, réordonnable et cochable sans quitter le minuteur.",
+        "La pièce maîtresse est le mode compact : une fenêtre de 260 par 120 pixels, sans bordure, toujours au premier plan et déplaçable à la souris. Le temps restant y est représenté par une vague qui monte pendant le travail et redescend pendant la pause, avec un texte qui s'inverse automatiquement grâce aux modes de fusion CSS pour rester lisible quel que soit le niveau. Le tout dans une palette strictement monochrome.",
+        "Techniquement, c'est du React 19 et TypeScript avec Tauri 2, disponible sur Windows, macOS et Linux. Les sons de transition sont synthétisés via l'API Web Audio plutôt qu'embarqués en fichiers, ce qui évite d'alourdir l'application.",
+        "J'ai volontairement gardé le projet minimal : un composant React d'environ 750 lignes sans abstraction inutile, et un back-end Rust réduit au strict nécessaire, avec seulement neuf permissions limitées à la manipulation de fenêtre. Sur un outil de cette taille, ajouter des couches aurait coûté plus en complexité que ça n'aurait rapporté. Le code est publié sur GitHub sous licence MIT.",
+      ],
+      en: [
+        "Basilic is a lightweight Pomodoro timer built around one simple idea: a timer should never become yet another distraction. It sits in a corner of the screen and stays out of the way. No account, no telemetry, and all data stays on the machine.",
+        "Work and break durations are configurable, with automatic chaining from work to break to work, and a 15 minute long break triggered every four sessions. A daily goal tracker shows completed sessions. Each session can carry its own task list, reorderable and checkable without leaving the timer.",
+        "The centrepiece is the compact mode: a 260 by 120 pixel window, borderless, always on top and draggable with the mouse. Remaining time is shown as a wave that rises during work and recedes during breaks, with text automatically inverting through CSS blend modes so it stays legible at any level. All of it in a strictly monochrome palette.",
+        "Technically it is React 19 and TypeScript with Tauri 2, available on Windows, macOS and Linux. Transition sounds are synthesised through the Web Audio API rather than shipped as files, which keeps the app light.",
+        "I deliberately kept the project minimal: a single React component of around 750 lines with no needless abstraction, and a Rust backend cut down to the essentials, with only nine permissions limited to window manipulation. On a tool this size, adding layers would have cost more in complexity than it returned. The code is on GitHub under the MIT license.",
+      ],
+    },
+    stack: ["Tauri 2", "React 19", "TypeScript", "Web Audio API", "Multi-plateforme"],
+    image: "/images/projects/basilic/1.png",
+    gallery: ["/images/projects/basilic/1.png", "/images/projects/basilic/2.png"],
+    links: [
+      {
+        label: "Code source sur GitHub",
+        href: "https://github.com/Mathew3585/Basilic-Pomodoro_App",
       },
     ],
   },
