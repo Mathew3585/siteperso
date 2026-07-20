@@ -235,6 +235,42 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "fideliter",
+    title: "Fideliter",
+    year: "2026",
+    categories: ["app"],
+    role: { fr: "Développement & infrastructure", en: "Development & infrastructure" },
+    summary: {
+      fr: "Programme de fidélité en deux applications, côté commerçant et côté client : QR code personnel, points calculés sur le montant des factures et récompenses, le tout sur un serveur auto-hébergé accessible partout.",
+      en: "A loyalty program in two apps, one for the shop and one for the customer: personal QR code, points earned from receipt amounts and rewards, all on a self-hosted server reachable anywhere.",
+    },
+    description: {
+      fr: [
+        "Deuxième application réalisée pour le même client, après la gestion des prix. L'objectif : remplacer la carte de fidélité papier par un système numérique, sans passer par une plateforme payante au mois.",
+        "Le projet se compose de deux applications distinctes. Côté commerçant, l'équipe dispose d'un annuaire client consultable par nom, téléphone ou code fidélité, avec création de compte à la volée. Pour créditer des points, il suffit de scanner le QR code du client et de saisir le montant de la facture.",
+        "Le barème est entièrement paramétrable : on définit combien d'euros valent un point (par exemple 25 euros pour 1 point), avec un aperçu en direct du résultat. Les points sont proportionnels et fractionnés, donc une facture de 10 euros crédite 0,4 point plutôt que rien du tout. Une section dédiée permet de gérer les récompenses que les points débloquent, comme un café offert.",
+        "Côté client, l'application permet de créer son compte, de consulter l'historique de ses dépenses et d'afficher son QR code personnel avec son solde de points, à présenter en caisse.",
+        "Côté infrastructure, tout repose sur le serveur PocketBase déjà installé chez le client pour la gestion des prix, avec des bases de données strictement séparées entre les deux projets. Pour que les clients puissent utiliser l'application depuis n'importe où, j'ai exposé le serveur via un tunnel Tailscale Funnel : le service devient accessible en HTTPS depuis l'extérieur sans ouvrir de port sur le réseau du commerçant ni louer une IP publique fixe. Un serveur auto-hébergé, mais joignable partout et à tout moment depuis un téléphone.",
+      ],
+      en: [
+        "The second application built for the same client, after the pricing tool. The goal: replace the paper loyalty card with a digital system, without paying a monthly platform fee.",
+        "The project is made of two separate apps. On the shop side, the team gets a customer directory searchable by name, phone or loyalty code, with on-the-spot account creation. To credit points, staff simply scan the customer's QR code and enter the receipt amount.",
+        "The earning rate is fully configurable: you set how many euros are worth one point (say 25 euros for 1 point), with a live preview of the result. Points are proportional and fractional, so a 10 euro receipt credits 0.4 points rather than nothing at all. A dedicated section manages the rewards those points unlock, such as a free coffee.",
+        "On the customer side, the app lets people create an account, review their spending history and display a personal QR code with their current balance, ready to be scanned at the counter.",
+        "Infrastructure-wise, everything runs on the PocketBase server already installed at the client's premises for the pricing tool, with strictly separate databases between the two projects. So customers can use the app from anywhere, I exposed the server through a Tailscale Funnel tunnel: the service becomes reachable over HTTPS from outside without opening a port on the shop's network or renting a fixed public IP. A self-hosted server, yet reachable anywhere and anytime from a phone.",
+      ],
+    },
+    stack: ["PocketBase", "Android", "QR code", "Tailscale Funnel", "Temps réel", "Auto-hébergé"],
+    image: "/images/projects/fideliter/1.jpg",
+    gallery: [
+      "/images/projects/fideliter/1.jpg",
+      "/images/projects/fideliter/2.jpg",
+      "/images/projects/fideliter/3.png",
+      "/images/projects/fideliter/4.png",
+      "/images/projects/fideliter/6.png",
+    ],
+  },
+  {
     slug: "clavier-custom",
     title: "Clavier custom",
     year: "2026",
