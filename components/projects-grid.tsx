@@ -11,7 +11,7 @@ import {
 import { ProjectCard } from "./project-card";
 import { cn } from "@/lib/utils";
 
-const CATEGORIES: ProjectCategory[] = ["game", "engine", "xr", "ai", "hardware"];
+const CATEGORIES: ProjectCategory[] = ["game", "app", "engine", "xr", "ai", "hardware"];
 
 export function ProjectsGrid({
   projects,

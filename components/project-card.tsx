@@ -14,6 +14,7 @@ const GRADIENTS: Record<string, string> = {
   xr: "linear-gradient(135deg, #cf9b5f 0%, #9c6b3f 100%)",
   ai: "linear-gradient(135deg, #c26b3d 0%, #8a4e2f 100%)",
   hardware: "linear-gradient(135deg, #b98a5e 0%, #6b4a30 100%)",
+  app: "linear-gradient(135deg, #d0956a 0%, #9c5f38 100%)",
 };
 
 export function ProjectCard({

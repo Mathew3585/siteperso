@@ -50,7 +50,7 @@ export function Gallery({
                 width={2400}
                 height={1600}
                 sizes="(max-width: 1024px) 100vw, 800px"
-                className="block h-auto w-full"
+                className="mx-auto block h-auto max-h-[70vh] w-full object-contain"
                 priority={index === 0}
               />
             )}

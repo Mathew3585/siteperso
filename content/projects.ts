@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n/config";
 
 export type LocalizedText = Record<Locale, string>;
-export type ProjectCategory = "game" | "engine" | "xr" | "ai" | "hardware";
+export type ProjectCategory = "game" | "engine" | "xr" | "ai" | "hardware" | "app";
 
 export interface Project {
   slug: string;
@@ -25,11 +25,15 @@ export const categoryLabels: Record<ProjectCategory, LocalizedText> = {
   xr: { fr: "AR / VR / Simulation", en: "AR / VR / Simulation" },
   ai: { fr: "IA / LLM", en: "AI / LLM" },
   hardware: { fr: "Hardware / DIY", en: "Hardware / DIY" },
+  app: { fr: "Application / Client", en: "App / Client work" },
 };
 
 /**
- * Projets réalisés chez TorrusVR.
- * (Ajoute `image: "/images/mon-screenshot.jpg"` sur un projet pour remplacer le dégradé.)
+ * Projets du portfolio.
+ *
+ * Les images de chaque projet vivent dans public/images/projects/<slug>/
+ * numérotées 1.jpg, 2.jpg, ... (fichiers d'origine, non compressés).
+ * `image` = vignette de la carte, `gallery` = carrousel de la page détail.
  */
 export const projects: Project[] = [
   {
@@ -56,14 +60,14 @@ export const projects: Project[] = [
       ],
     },
     stack: ["Unity", "C#", "Projection interactive", "IoT", "Audio 5.1"],
-    image: "/images/zone-101.jpg",
+    image: "/images/projects/zone-101/1.jpg",
     video: "https://youtu.be/PN8D60DLA2c",
     gallery: [
-      "/images/projects/zone-1.jpg",
-      "/images/projects/zone-2.jpg",
-      "/images/projects/zone-3.jpg",
-      "/images/projects/zone-4.jpg",
-      "/images/projects/zone-5.png",
+      "/images/projects/zone-101/1.jpg",
+      "/images/projects/zone-101/2.jpg",
+      "/images/projects/zone-101/3.jpg",
+      "/images/projects/zone-101/4.jpg",
+      "/images/projects/zone-101/5.png",
     ],
     links: [{ label: "torrusvr.com", href: "https://torrusvr.com/zone-101-action-game/" }],
   },
@@ -91,14 +95,14 @@ export const projects: Project[] = [
       ],
     },
     stack: ["Unity", "C#", "Vision par ordinateur", "Détection de gestes", "Tablette"],
-    image: "/images/immersicase.jpg",
+    image: "/images/projects/immersicase/1.jpg",
     video: "https://youtu.be/OydlkUUtXOI",
     gallery: [
-      "/images/projects/imm-1.jpg",
-      "/images/projects/imm-2.jpg",
-      "/images/projects/imm-3.png",
-      "/images/projects/imm-4.jpg",
-      "/images/projects/imm-5.png",
+      "/images/projects/immersicase/1.jpg",
+      "/images/projects/immersicase/2.jpg",
+      "/images/projects/immersicase/3.png",
+      "/images/projects/immersicase/4.jpg",
+      "/images/projects/immersicase/5.png",
     ],
     links: [{ label: "torrusvr.com", href: "https://torrusvr.com/immersicase/" }],
   },
@@ -106,7 +110,6 @@ export const projects: Project[] = [
     slug: "underwater-vr",
     title: "UnderWater",
     year: "2023",
-    featured: true,
     categories: ["xr"],
     role: { fr: "Développeur Unity / VR chez TorrusVR", en: "Unity / VR Developer at TorrusVR" },
     summary: {
@@ -124,7 +127,7 @@ export const projects: Project[] = [
       ],
     },
     stack: ["Unity", "C#", "VR"],
-    image: "/images/underwater.jpg",
+    image: "/images/projects/underwater-vr/1.jpg",
     video: "https://youtu.be/4qkHWo-qT-c",
     links: [{ label: "Voir la vidéo", href: "https://youtu.be/4qkHWo-qT-c" }],
   },
@@ -149,8 +152,8 @@ export const projects: Project[] = [
       ],
     },
     stack: ["Unity", "C#", "Éditeur Unity", "URP", "HDRP"],
-    image: "/images/projects/est-1.jpg",
-    gallery: ["/images/projects/est-1.jpg", "/images/projects/est-2.jpg"],
+    image: "/images/projects/easy-screenshot-tool/1.jpg",
+    gallery: ["/images/projects/easy-screenshot-tool/1.jpg", "/images/projects/easy-screenshot-tool/2.jpg"],
     links: [
       {
         label: "Unity Asset Store",
@@ -179,17 +182,53 @@ export const projects: Project[] = [
       ],
     },
     stack: ["Unity", "C#", "Éditeur Unity", "Outillage"],
-    image: "/images/projects/gsr-1.jpg",
+    image: "/images/projects/ghostscript-remover/1.jpg",
     gallery: [
-      "/images/projects/gsr-1.jpg",
-      "/images/projects/gsr-2.jpg",
-      "/images/projects/gsr-3.jpg",
+      "/images/projects/ghostscript-remover/1.jpg",
+      "/images/projects/ghostscript-remover/2.jpg",
+      "/images/projects/ghostscript-remover/3.jpg",
     ],
     links: [
       {
         label: "Unity Asset Store",
         href: "https://assetstore.unity.com/packages/tools/utilities/ghostscriptremover-305607",
       },
+    ],
+  },
+  {
+    slug: "gestion-des-prix",
+    title: "Gestion des prix",
+    year: "2026",
+    featured: true,
+    categories: ["app"],
+    role: { fr: "Développement & mise en production", en: "Development & deployment" },
+    summary: {
+      fr: "Application mobile de gestion de stock et de prix développée pour un client, adossée à un serveur PocketBase installé dans ses locaux, avec synchronisation en temps réel entre les membres de l'équipe.",
+      en: "A mobile stock and pricing app built for a client, backed by a PocketBase server installed on their premises, with real-time sync across the team.",
+    },
+    description: {
+      fr: [
+        "Un client avait besoin de piloter ses prix et son stock au quotidien, avec plusieurs personnes travaillant sur les mêmes données en même temps. Les solutions du marché étaient soit surdimensionnées, soit facturées au mois et par utilisateur. J'ai développé une application sur mesure, du back-end à l'interface.",
+        "Le catalogue : plus de 200 produits avec photo, recherche instantanée et tris multiples (récents, alphabétique, prix croissant ou décroissant, et surtout par marge). Chaque fiche produit contient le prix d'achat, le prix de vente, le conditionnement (unité ou pack), la quantité et son unité, ainsi que le stock, ajustable par incréments rapides.",
+        "À partir de ces données, l'application calcule automatiquement la marge en pourcentage et le prix ramené au litre ou au kilo. C'est ce qui permet de repérer d'un coup d'œil les produits les moins rentables, en triant simplement le catalogue par marge.",
+        "Un scanner de code-barres permet de retrouver ou d'enregistrer un produit directement depuis son EAN, sans saisie manuelle. Et un module d'étiquettes génère des planches prêtes à imprimer au format A4 : nom du produit, prix, prix au litre et code-barres régénéré, le tout paginé pour couvrir l'ensemble du catalogue.",
+        "Côté serveur, j'ai retenu PocketBase et je l'ai installé directement dans les locaux du client. Les données restent chez lui, sans abonnement cloud, et le temps réel est natif : dès qu'une personne modifie un prix ou un stock, la mise à jour apparaît instantanément sur les autres appareils de l'équipe, sans rafraîchissement.",
+      ],
+      en: [
+        "A client needed to manage prices and stock day to day, with several people working on the same data at once. Off-the-shelf solutions were either oversized or billed monthly per user, so I built a tailored application, from the back end to the interface.",
+        "The catalogue: over 200 products with photos, instant search and multiple sort options (recent, alphabetical, price ascending or descending, and above all by margin). Each product holds its purchase price, selling price, packaging (unit or pack), quantity and unit, plus stock, adjustable with quick increments.",
+        "From that data, the app automatically computes the margin percentage and the price per litre or kilo. That's what lets the team spot the least profitable products at a glance, simply by sorting the catalogue by margin.",
+        "A barcode scanner makes it possible to find or register a product straight from its EAN, with no manual entry. A label module generates print-ready A4 sheets: product name, price, price per litre and a regenerated barcode, paginated to cover the whole catalogue.",
+        "On the server side I chose PocketBase and installed it directly on the client's premises. Their data stays in-house, with no cloud subscription, and real-time comes built in: as soon as someone changes a price or a stock level, the update appears instantly on the rest of the team's devices, with no refresh.",
+      ],
+    },
+    stack: ["PocketBase", "Android", "Temps réel", "Code-barres", "Auto-hébergé"],
+    image: "/images/projects/gestion-des-prix/1.png",
+    gallery: [
+      "/images/projects/gestion-des-prix/1.png",
+      "/images/projects/gestion-des-prix/2.png",
+      "/images/projects/gestion-des-prix/3.png",
+      "/images/projects/gestion-des-prix/4.png",
     ],
   },
   {
@@ -215,14 +254,14 @@ export const projects: Project[] = [
       ],
     },
     stack: ["Chêne massif", "Hot-swap", "Keycaps custom", "Montage", "Soudure"],
-    image: "/images/projects/clavier-1.jpg",
+    image: "/images/projects/clavier-custom/1.jpg",
     video: "https://youtu.be/Hs6-nNDq0qo",
     gallery: [
-      "/images/projects/clavier-1.jpg",
-      "/images/projects/clavier-2.jpg",
-      "/images/projects/clavier-3.jpg",
-      "/images/projects/clavier-4.jpg",
-      "/images/projects/clavier-5.jpg",
+      "/images/projects/clavier-custom/1.jpg",
+      "/images/projects/clavier-custom/2.jpg",
+      "/images/projects/clavier-custom/3.jpg",
+      "/images/projects/clavier-custom/4.jpg",
+      "/images/projects/clavier-custom/5.jpg",
     ],
     links: [{ label: "Voir la vidéo", href: "https://youtu.be/Hs6-nNDq0qo" }],
   },
@@ -256,20 +295,20 @@ export const projects: Project[] = [
       ],
     },
     stack: ["ESP32", "C++", "Tauri", "OBS", "Impression 3D"],
-    image: "/images/projects/streamdeck-1.jpg",
+    image: "/images/projects/stream-deck-diy/1.jpg",
     gallery: [
-      "/images/projects/streamdeck-1.jpg",
-      "/images/projects/streamdeck-2.jpg",
-      "/images/projects/streamdeck-3.jpg",
-      "/images/projects/streamdeck-4.jpg",
-      "/images/projects/streamdeck-5.jpg",
-      "/images/projects/streamdeck-6.jpg",
-      "/images/projects/streamdeck-7.jpg",
-      "/images/projects/streamdeck-8.jpg",
-      "/images/projects/streamdeck-9.jpg",
-      "/images/projects/streamdeck-10.jpg",
-      "/images/projects/streamdeck-11.jpg",
-      "/images/projects/streamdeck-13.jpg",
+      "/images/projects/stream-deck-diy/1.jpg",
+      "/images/projects/stream-deck-diy/2.jpg",
+      "/images/projects/stream-deck-diy/3.jpg",
+      "/images/projects/stream-deck-diy/4.jpg",
+      "/images/projects/stream-deck-diy/5.jpg",
+      "/images/projects/stream-deck-diy/6.jpg",
+      "/images/projects/stream-deck-diy/7.jpg",
+      "/images/projects/stream-deck-diy/8.jpg",
+      "/images/projects/stream-deck-diy/9.jpg",
+      "/images/projects/stream-deck-diy/10.jpg",
+      "/images/projects/stream-deck-diy/11.jpg",
+      "/images/projects/stream-deck-diy/12.jpg",
     ],
   },
 ];

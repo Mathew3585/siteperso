@@ -12,8 +12,8 @@ import fs from "node:fs";
 import path from "node:path";
 
 const OUT_DIR = "public/images/projects";
-const MAX_WIDTH = 2400;
-const QUALITY = 84;
+const MAX_WIDTH = 3000;
+const QUALITY = 92;
 
 const DEFAULT_GROUPS = [
   { dir: "_source-photos/Clavier export", prefix: "clavier" },
