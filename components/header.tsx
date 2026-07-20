@@ -54,26 +54,27 @@ export function Header({ locale, name, nav, cvLabel, cvHref }: HeaderProps) {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "group relative flex items-center rounded-full py-1.5 text-sm transition-colors",
-                  active ? "pl-8 pr-3.5 text-foreground" : "px-3.5 text-muted hover:text-foreground"
+                  "group relative flex items-center rounded-full px-3.5 py-1.5 text-sm transition-colors",
+                  active ? "text-foreground" : "text-muted hover:text-foreground"
                 )}
               >
                 <span
                   className={cn(
-                    "pointer-events-none absolute left-2.5 flex items-center transition-opacity duration-200",
-                    active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                    "pointer-events-none grid transition-[grid-template-columns] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                    active ? "grid-cols-[1fr]" : "grid-cols-[0fr] group-hover:grid-cols-[1fr]"
                   )}
                 >
-                  <Icon className="h-4 w-4 text-accent" aria-hidden />
+                  <span className="flex min-w-0 items-center overflow-hidden">
+                    <Icon
+                      className={cn(
+                        "mr-1.5 h-4 w-4 shrink-0 text-accent transition-opacity duration-200",
+                        active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                      )}
+                      aria-hidden
+                    />
+                  </span>
                 </span>
-                <span
-                  className={cn(
-                    "transition-transform duration-200",
-                    active ? "" : "group-hover:translate-x-4"
-                  )}
-                >
-                  {item.label}
-                </span>
+                <span className="whitespace-nowrap">{item.label}</span>
                 {active && (
                   <motion.span
                     layoutId="nav-active"
