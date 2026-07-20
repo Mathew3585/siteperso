@@ -38,6 +38,45 @@ export const categoryLabels: Record<ProjectCategory, LocalizedText> = {
  */
 export const projects: Project[] = [
   {
+    slug: "pirate-experience",
+    title: "Pirate Experience",
+    year: "2026",
+    featured: true,
+    categories: ["game"],
+    role: { fr: "Lead développeur chez TorrusVR", en: "Lead developer at TorrusVR" },
+    summary: {
+      fr: "Action game immersif ouvert à Paris : 6 salles, 2 à 6 joueurs, une heure d'aventure à bord d'un navire pirate. J'étais l'un des deux lead devs, sur la création des jeux et leur connexion au matériel physique.",
+      en: "An immersive action game that opened in Paris: 6 rooms, 2 to 6 players, an hour-long adventure aboard a pirate ship. I was one of the two lead developers, building the games and wiring them to the physical hardware.",
+    },
+    description: {
+      fr: [
+        "Pirate Experience est un action game immersif ouvert à Paris après plus d'un an de développement. Une équipe de 2 à 6 joueurs embarque pour environ une heure d'aventure et progresse à travers six salles thématiques, à bord d'un navire pirate reconstitué. L'expérience est accessible dès 6 ans.",
+        "J'ai été l'un des deux lead développeurs du projet. Ma première mission a été la création de plusieurs des jeux installés dans les salles. Chaque salle a sa propre mécanique, donc chacune est un mini-jeu à concevoir et à équilibrer : rapidité et coordination sur des boutons interactifs dans la cale, observation et logique dans la cabine du capitaine, lancer de projectiles sur des murs interactifs pendant l'attaque, sol interactif façon « le sol est de la lave » dans la grotte, défi de rythme sur de vrais tambours à la porte au trésor, et collecte chronométrée dans la salle au trésor.",
+        "Mon second grand chantier a été la connexion entre les jeux et le matériel physique réel : boutons, murs et sols interactifs, tambours, capteurs. C'est la partie la plus exigeante d'une installation comme celle-ci, parce que tout doit être fiable en exploitation continue. Le système est entièrement automatisé, sans remise en état manuelle entre deux sessions.",
+        "L'ensemble est piloté par un système centralisé qui suit la progression des équipes en temps réel dans les six salles, avec une gestion des joueurs (création d'équipe, photo, scores en direct) et une interface d'administration permettant au personnel de surveiller l'état des salles et le bon fonctionnement du matériel.",
+      ],
+      en: [
+        "Pirate Experience is an immersive action game that opened in Paris after more than a year of development. A team of 2 to 6 players sets off for about an hour of adventure across six themed rooms aboard a recreated pirate ship. It is suitable from age 6.",
+        "I was one of the two lead developers on the project. My first assignment was building several of the games installed in the rooms. Each room has its own mechanic, so each is a mini-game to design and balance: speed and coordination on interactive buttons in the hold, observation and logic in the captain's cabin, throwing projectiles at interactive walls during the attack, a floor-is-lava interactive ground in the cave, a rhythm challenge on real drums at the treasure door, and a timed collection run in the treasure room.",
+        "My second major area was the connection between the games and the real physical hardware: buttons, interactive walls and floors, drums and sensors. That is the most demanding part of an installation like this, because everything has to stay reliable under continuous operation. The system is fully automated, with no manual reset between sessions.",
+        "The whole venue is driven by a centralised system that tracks team progression across the six rooms in real time, with player management (team creation, photo, live scores) and an admin interface letting staff monitor room status and hardware health.",
+      ],
+    },
+    stack: ["Unity", "C#", "Matériel interactif", "Temps réel", "Systèmes automatisés"],
+    image: "/images/projects/pirate-experience/1.jpg",
+    videoFile: "/images/projects/pirate-experience/teaser.mp4",
+    gallery: [
+      "/images/projects/pirate-experience/1.jpg",
+      "/images/projects/pirate-experience/2.jpg",
+      "/images/projects/pirate-experience/3.jpg",
+      "/images/projects/pirate-experience/4.jpg",
+      "/images/projects/pirate-experience/5.jpg",
+      "/images/projects/pirate-experience/6.jpg",
+      "/images/projects/pirate-experience/7.jpg",
+    ],
+    links: [{ label: "torrusvr.com", href: "https://torrusvr.com/project/pirate-experience/" }],
+  },
+  {
     slug: "zone-101",
     title: "Zone 101",
     year: "2024",
@@ -76,7 +115,6 @@ export const projects: Project[] = [
     slug: "immersicase",
     title: "Immersicase",
     year: "2024",
-    featured: true,
     categories: ["game"],
     role: { fr: "Développeur Unity chez TorrusVR", en: "Unity Developer at TorrusVR" },
     summary: {
