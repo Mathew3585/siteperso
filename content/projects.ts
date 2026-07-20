@@ -103,37 +103,10 @@ export const projects: Project[] = [
     links: [{ label: "torrusvr.com", href: "https://torrusvr.com/immersicase/" }],
   },
   {
-    slug: "formation-vr-usine",
-    title: "Formation VR en usine",
-    year: "2023",
-    featured: true,
-    categories: ["xr"],
-    role: { fr: "Développeur Unity / VR chez TorrusVR", en: "Unity / VR Developer at TorrusVR" },
-    summary: {
-      fr: "Prototype de formation en réalité virtuelle pour des opérateurs en usine, réalisé pour un grand groupe industriel.",
-      en: "Virtual reality training prototype for factory operators, built for a major industrial group.",
-    },
-    description: {
-      fr: [
-        "Prototype de formation en réalité virtuelle destiné à des opérateurs en usine, réalisé pour un grand groupe industriel.",
-        "L'objectif : reproduire des gestes et des scénarios de formation en environnement sûr et immersif, avec des interactions réalistes.",
-        "Un focus particulier sur la lisibilité des consignes et la fluidité de l'expérience en casque VR.",
-      ],
-      en: [
-        "A virtual reality training prototype for factory operators, built for a major industrial group.",
-        "The goal: reproduce gestures and training scenarios in a safe, immersive environment, with realistic interactions.",
-        "A strong focus on clarity of instructions and smooth performance in the VR headset.",
-      ],
-    },
-    stack: ["Unity", "C#", "VR", "XR Interaction Toolkit"],
-    image: "/images/formation-vr-usine.jpg",
-    video: "https://youtu.be/El9zMAwL5zw",
-    links: [{ label: "Voir la vidéo", href: "https://youtu.be/El9zMAwL5zw" }],
-  },
-  {
     slug: "underwater-vr",
     title: "UnderWater",
     year: "2023",
+    featured: true,
     categories: ["xr"],
     role: { fr: "Développeur Unity / VR chez TorrusVR", en: "Unity / VR Developer at TorrusVR" },
     summary: {
