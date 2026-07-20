@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n/config";
 
 export type LocalizedText = Record<Locale, string>;
-export type ProjectCategory = "game" | "engine" | "xr" | "ai";
+export type ProjectCategory = "game" | "engine" | "xr" | "ai" | "hardware";
 
 export interface Project {
   slug: string;
@@ -24,6 +24,7 @@ export const categoryLabels: Record<ProjectCategory, LocalizedText> = {
   engine: { fr: "Outils / Asset Store", en: "Tools / Asset Store" },
   xr: { fr: "AR / VR / Simulation", en: "AR / VR / Simulation" },
   ai: { fr: "IA / LLM", en: "AI / LLM" },
+  hardware: { fr: "Hardware / DIY", en: "Hardware / DIY" },
 };
 
 /**
@@ -216,6 +217,83 @@ export const projects: Project[] = [
         label: "Unity Asset Store",
         href: "https://assetstore.unity.com/packages/tools/utilities/ghostscriptremover-305607",
       },
+    ],
+  },
+  {
+    slug: "clavier-custom",
+    title: "Clavier custom",
+    year: "2026",
+    categories: ["hardware"],
+    role: { fr: "Conception & montage", en: "Design & build" },
+    summary: {
+      fr: "Mon premier clavier custom hot-swap : 1,2 kg, case en chêne massif et palette bois, crème et café.",
+      en: "My first custom hot-swap keyboard: 1.2 kg, solid oak case and a wood, cream and coffee palette.",
+    },
+    description: {
+      fr: [
+        "Un clavier custom monté entièrement à la main, de la recherche des composants à l'assemblage final. C'était mon premier montage, et le plus long a été de trouver les bonnes pièces pour obtenir exactement le rendu voulu.",
+        "Le résultat : 1,2 kg, une case en chêne massif, des switches hot-swap (remplaçables sans soudure) et des keycaps dans une palette bois, crème et café assortie au bois.",
+        "J'en ai fait une vidéo où je montre le montage de A à Z, les réparations et le fonctionnement, avec un petit tutoriel sur la différence entre un clavier mécanique et un clavier custom. Grand passionné du sujet.",
+      ],
+      en: [
+        "A custom keyboard built entirely by hand, from sourcing the parts to final assembly. It was my first build, and the longest part was finding the right components to get exactly the look I wanted.",
+        "The result: 1.2 kg, a solid oak case, hot-swap switches (replaceable without soldering) and keycaps in a wood, cream and coffee palette matching the case.",
+        "I made a video showing the build from start to finish, repairs and how it works, plus a short tutorial on the difference between a mechanical keyboard and a custom one. A topic I'm passionate about.",
+      ],
+    },
+    stack: ["Chêne massif", "Hot-swap", "Keycaps custom", "Montage", "Soudure"],
+    image: "/images/projects/clavier-1.jpg",
+    video: "https://youtu.be/Hs6-nNDq0qo",
+    gallery: [
+      "/images/projects/clavier-1.jpg",
+      "/images/projects/clavier-2.jpg",
+      "/images/projects/clavier-3.jpg",
+      "/images/projects/clavier-4.jpg",
+      "/images/projects/clavier-5.jpg",
+    ],
+    links: [{ label: "Voir la vidéo", href: "https://youtu.be/Hs6-nNDq0qo" }],
+  },
+  {
+    slug: "stream-deck-diy",
+    title: "Stream Deck DIY",
+    year: "2026",
+    categories: ["hardware"],
+    role: {
+      fr: "Électronique, firmware & application",
+      en: "Electronics, firmware & app",
+    },
+    summary: {
+      fr: "Mon propre Stream Deck fait maison : ESP32, switches récupérés de mon clavier custom, et une application PC développée sur mesure.",
+      en: "My own homemade Stream Deck: ESP32, switches left over from my custom keyboard, and a custom desktop app.",
+    },
+    description: {
+      fr: [
+        "Je stream de temps en temps sur Twitch et je ne voulais pas mettre 100 euros dans un Stream Deck du commerce. J'ai donc fabriqué le mien.",
+        "Côté matériel : un ESP32, des switches hot-swap qu'il me restait du montage de mon clavier custom, des keycaps assortis et un boîtier imprimé en 3D. J'ai développé moi-même le code embarqué qui détecte les appuis sur les touches.",
+        "Côté logiciel : une application de bureau développée avec Tauri, qui fait le pont entre le boîtier et le PC. Chaque touche est associée à une action OBS ou à un raccourci Windows / macOS.",
+      ],
+      en: [
+        "I stream on Twitch from time to time and didn't want to spend 100 euros on an off-the-shelf Stream Deck. So I built my own.",
+        "Hardware: an ESP32, hot-swap switches left over from my custom keyboard build, matching keycaps and a 3D-printed case. I wrote the embedded code that detects key presses myself.",
+        "Software: a desktop app built with Tauri that bridges the device and the PC. Each key is mapped to an OBS action or a Windows / macOS shortcut.",
+      ],
+    },
+    stack: ["ESP32", "C++", "Tauri", "OBS", "Impression 3D"],
+    image: "/images/projects/streamdeck-1.jpg",
+    gallery: [
+      "/images/projects/streamdeck-1.jpg",
+      "/images/projects/streamdeck-2.jpg",
+      "/images/projects/streamdeck-3.jpg",
+      "/images/projects/streamdeck-4.jpg",
+      "/images/projects/streamdeck-5.jpg",
+      "/images/projects/streamdeck-6.jpg",
+      "/images/projects/streamdeck-7.jpg",
+      "/images/projects/streamdeck-8.jpg",
+      "/images/projects/streamdeck-9.jpg",
+      "/images/projects/streamdeck-10.jpg",
+      "/images/projects/streamdeck-11.jpg",
+      "/images/projects/streamdeck-12.jpg",
+      "/images/projects/streamdeck-13.jpg",
     ],
   },
 ];
