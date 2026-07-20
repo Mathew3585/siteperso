@@ -79,7 +79,7 @@ export const projects: Project[] = [
   {
     slug: "zone-101",
     title: "Zone 101",
-    year: "2024",
+    year: "2025 - 2026",
     featured: true,
     categories: ["game"],
     role: { fr: "Développeur Unity chez TorrusVR", en: "Unity Developer at TorrusVR" },
