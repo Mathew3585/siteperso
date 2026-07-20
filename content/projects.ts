@@ -274,6 +274,42 @@ const allProjects: Project[] = [
     ],
   },
   {
+    slug: "hyperwisper",
+    title: "Hyperwisper",
+    year: "2026",
+    categories: ["ai"],
+    role: { fr: "Projet open source, développé seul", en: "Open source project, built solo" },
+    summary: {
+      fr: "Dictée vocale 100 % locale pour Windows : une touche, on parle, le texte s'écrit dans l'application active. Une alternative libre et gratuite à SuperWhisper, publiée en open source sous licence MIT.",
+      en: "Fully local voice dictation for Windows: press a key, speak, and the text lands in the active app. A free and open alternative to SuperWhisper, released under the MIT license.",
+    },
+    description: {
+      fr: [
+        "Hyperwisper est une application de dictée vocale pour Windows qui fonctionne entièrement hors ligne. On presse un raccourci clavier, on parle, et le texte transcrit est directement collé dans la fenêtre active, quelle que soit l'application. Aucun compte, aucun abonnement, aucun envoi de données : c'est une alternative libre aux outils payants du même type comme SuperWhisper.",
+        "La transcription tourne sur whisper.cpp, avec six modèles Whisper disponibles allant de 32 Mo (Tiny) à 1 Go (Large-v3). Le modèle par défaut est embarqué dans l'installeur, donc l'application est utilisable hors ligne dès l'installation, et les autres modèles se téléchargent à la demande. Une détection d'activité vocale filtre les enregistrements silencieux et écarte automatiquement ceux de moins de 250 ms.",
+        "Le vrai défi était la latence : une dictée n'est utilisable que si le texte arrive quasi instantanément. Grâce à l'accélération GPU via Vulkan, il s'écoule moins d'une seconde entre le relâchement de la touche et le texte collé (mesuré sur Ryzen 9 5900X et RTX 3060). Une version processeur seul reste 2 à 3 fois plus lente, mais utilisable au quotidien.",
+        "Techniquement, le cœur est écrit en Rust avec Tauri 2, et l'interface en React et TypeScript. La chaîne audio capture le micro via CPAL et WASAPI, rééchantillonne en 16 kHz avec Rubato, puis passe à whisper.cpp par le binding whisper-rs. L'intégration système gère un raccourci global personnalisable, la saisie clavier synthétique et le presse-papiers, avec restauration du contenu précédent et repli automatique en mode presse-papiers pour les fenêtres protégées.",
+        "Autour de ça, j'ai soigné l'usage réel : assistant de configuration en six étapes (test du micro, choix du modèle, raccourci), overlay flottant déplaçable affichant la forme d'onde et un minuteur en deux tailles, modes bascule ou maintien de touche, historique local, thèmes clair et sombre. La distribution se fait via un exécutable portable auto-installable, sans droits administrateur, avec une désinstallation propre. Le code est publié sur GitHub sous licence MIT, libre y compris pour un usage commercial.",
+      ],
+      en: [
+        "Hyperwisper is a voice dictation app for Windows that runs entirely offline. You press a hotkey, speak, and the transcribed text is pasted straight into the active window, whatever the application. No account, no subscription, no data leaving the machine: it is a free alternative to paid tools such as SuperWhisper.",
+        "Transcription runs on whisper.cpp, with six Whisper models available from 32 MB (Tiny) up to 1 GB (Large-v3). The default model ships with the installer, so the app works offline right away, and the others download on demand. Voice activity detection filters out silent recordings and automatically discards anything under 250 ms.",
+        "The real challenge was latency: dictation is only usable if the text appears almost instantly. Thanks to GPU acceleration through Vulkan, less than a second passes between releasing the key and the pasted text (measured on a Ryzen 9 5900X with an RTX 3060). A CPU-only build stays 2 to 3 times slower but remains practical day to day.",
+        "Under the hood, the core is written in Rust with Tauri 2, and the interface in React and TypeScript. The audio chain captures the microphone through CPAL and WASAPI, resamples to 16 kHz with Rubato, then feeds whisper.cpp via the whisper-rs binding. System integration handles a customisable global hotkey, synthetic keyboard input and the clipboard, restoring previous content and falling back to clipboard-only for protected windows.",
+        "Around all this I focused on real-world use: a six-step setup wizard (mic test, model choice, hotkey), a draggable floating overlay showing the waveform and a timer in two sizes, toggle or push-to-talk modes, local history, light and dark themes. It ships as a self-installing portable executable requiring no administrator rights, with a clean uninstall. The code is on GitHub under the MIT license, free to use commercially.",
+      ],
+    },
+    stack: ["Rust", "Tauri 2", "whisper.cpp", "Vulkan", "React", "TypeScript"],
+    image: "/images/projects/hyperwisper/1.png",
+    gallery: [
+      "/images/projects/hyperwisper/1.png",
+      "/images/projects/hyperwisper/2.png",
+      "/images/projects/hyperwisper/3.png",
+      "/images/projects/hyperwisper/4.png",
+    ],
+    links: [{ label: "Code source sur GitHub", href: "https://github.com/Mathew3585/hyperwisper" }],
+  },
+  {
     slug: "clipforge",
     title: "ClipForge",
     year: "2026",
