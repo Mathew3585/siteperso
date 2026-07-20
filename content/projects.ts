@@ -392,7 +392,7 @@ const allProjects: Project[] = [
   },
   {
     slug: "fideliter",
-    title: "Fideliter",
+    title: "Application de fidélité",
     year: "2026",
     categories: ["app"],
     role: { fr: "Développement & infrastructure", en: "Development & infrastructure" },
