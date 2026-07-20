@@ -12,12 +12,12 @@ import fs from "node:fs";
 import path from "node:path";
 
 const OUT_DIR = "public/images/projects";
-const MAX_WIDTH = 1800;
-const QUALITY = 82;
+const MAX_WIDTH = 2400;
+const QUALITY = 84;
 
 const DEFAULT_GROUPS = [
-  { dir: "public/images/projects/Clavier export", prefix: "clavier" },
-  { dir: "public/images/projects/Stream Deck", prefix: "streamdeck" },
+  { dir: "_source-photos/Clavier export", prefix: "clavier" },
+  { dir: "_source-photos/Stream Deck", prefix: "streamdeck" },
 ];
 
 const [, , argDir, argPrefix] = process.argv;

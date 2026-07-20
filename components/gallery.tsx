@@ -29,8 +29,8 @@ export function Gallery({
 
   return (
     <div>
-      {/* Slide principale */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border bg-surface-2">
+      {/* Slide principale : garde le ratio naturel de l'image (pas de bandes) */}
+      <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-surface-2">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -38,17 +38,19 @@ export function Gallery({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="absolute inset-0"
           >
             {current.type === "video" ? (
-              <VideoSlide id={current.id} poster={current.poster} title={alt} />
+              <div className="relative aspect-[16/9] w-full">
+                <VideoSlide id={current.id} poster={current.poster} title={alt} />
+              </div>
             ) : (
               <Image
                 src={current.src}
-                alt={`${alt} — ${index + 1}/${count}`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 700px"
-                className="object-contain"
+                alt={`${alt} ${index + 1}/${count}`}
+                width={2400}
+                height={1600}
+                sizes="(max-width: 1280px) 100vw, 1250px"
+                className="block h-auto w-full"
                 priority={index === 0}
               />
             )}
