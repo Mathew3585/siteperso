@@ -276,7 +276,7 @@ const allProjects: Project[] = [
   {
     slug: "basilic",
     title: "Basilic",
-    year: "2026",
+    year: "2025",
     categories: ["app"],
     role: { fr: "Projet open source, développé seul", en: "Open source project, built solo" },
     summary: {

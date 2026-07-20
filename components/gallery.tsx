@@ -31,16 +31,25 @@ export function Gallery({
   const go = (dir: number) => setIndex((i) => (i + dir + count) % count);
   const current = slides[index];
 
-  // Fait suivre la bande de miniatures : la vignette active est recentrée.
+  // La bande de miniatures ne bouge que si la vignette active sort du champ,
+  // et juste ce qu'il faut pour la ramener (pas de recentrage brutal).
   const stripRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const strip = stripRef.current;
     const active = strip?.children[index] as HTMLElement | undefined;
     if (!strip || !active) return;
-    strip.scrollTo({
-      left: Math.max(0, active.offsetLeft - strip.clientWidth / 2 + active.clientWidth / 2),
-      behavior: "smooth",
-    });
+
+    const margin = 12;
+    const left = active.offsetLeft;
+    const right = left + active.offsetWidth;
+    const viewLeft = strip.scrollLeft;
+    const viewRight = viewLeft + strip.clientWidth;
+
+    if (left < viewLeft + margin) {
+      strip.scrollTo({ left: Math.max(0, left - margin), behavior: "smooth" });
+    } else if (right > viewRight - margin) {
+      strip.scrollTo({ left: right - strip.clientWidth + margin, behavior: "smooth" });
+    }
   }, [index]);
 
   return (
