@@ -65,23 +65,27 @@ export default async function ProjectPage({
         </ButtonLink>
       </Reveal>
 
-      {/* min-w-0 sur la colonne : empêche la bande de miniatures d'élargir la grille */}
+      {/* En-tête, pleine largeur au-dessus */}
+      <Reveal>
+        <div className="mt-8 max-w-3xl">
+          <div className="mb-4 flex flex-wrap gap-2">
+            {project.categories.map((cat) => (
+              <span key={cat} className="text-xs font-semibold uppercase tracking-wide text-accent">
+                {categoryLabels[cat][l]}
+              </span>
+            ))}
+          </div>
+          <h1 className="font-display text-4xl tracking-tight sm:text-5xl">{project.title}</h1>
+          <p className="mt-4 text-lg text-muted">{project.summary[l]}</p>
+        </div>
+      </Reveal>
+
+      {/* Média + description à gauche, panneau infos à droite : alignés en haut */}
+      {/* min-w-0 : empêche la bande de miniatures d'élargir la grille */}
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.5fr_1fr]">
         <div className="min-w-0">
-          <Reveal>
-            <div className="mb-4 flex flex-wrap gap-2">
-              {project.categories.map((cat) => (
-                <span key={cat} className="text-xs font-semibold uppercase tracking-wide text-accent">
-                  {categoryLabels[cat][l]}
-                </span>
-              ))}
-            </div>
-            <h1 className="font-display text-4xl tracking-tight sm:text-5xl">{project.title}</h1>
-            <p className="mt-4 text-lg text-muted">{project.summary[l]}</p>
-          </Reveal>
-
           <Reveal delay={0.1}>
-            <div className="mt-8 min-w-0">
+            <div className="min-w-0">
               {project.gallery && project.gallery.length > 0 ? (
                 <Gallery
                   images={project.gallery}
