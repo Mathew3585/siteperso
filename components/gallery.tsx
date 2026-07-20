@@ -49,7 +49,7 @@ export function Gallery({
                 alt={`${alt} ${index + 1}/${count}`}
                 width={2400}
                 height={1600}
-                sizes="(max-width: 1280px) 100vw, 1250px"
+                sizes="(max-width: 1024px) 100vw, 800px"
                 className="block h-auto w-full"
                 priority={index === 0}
               />
