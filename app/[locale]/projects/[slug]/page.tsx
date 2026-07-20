@@ -65,61 +65,64 @@ export default async function ProjectPage({
         </ButtonLink>
       </Reveal>
 
-      <div className="mt-8 grid gap-10 lg:grid-cols-[1.5fr_1fr]">
-        <div>
-          <Reveal>
-            <div className="mb-4 flex flex-wrap gap-2">
-              {project.categories.map((cat) => (
-                <span key={cat} className="text-xs font-semibold uppercase tracking-wide text-accent">
-                  {categoryLabels[cat][l]}
-                </span>
-              ))}
-            </div>
-            <h1 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-              {project.title}
-            </h1>
-            <p className="mt-4 text-lg text-muted">{project.summary[l]}</p>
-          </Reveal>
+      {/* En-tête */}
+      <Reveal>
+        <div className="mt-8 max-w-3xl">
+          <div className="mb-4 flex flex-wrap gap-2">
+            {project.categories.map((cat) => (
+              <span key={cat} className="text-xs font-semibold uppercase tracking-wide text-accent">
+                {categoryLabels[cat][l]}
+              </span>
+            ))}
+          </div>
+          <h1 className="font-display text-4xl tracking-tight sm:text-5xl">{project.title}</h1>
+          <p className="mt-4 text-lg text-muted">{project.summary[l]}</p>
+        </div>
+      </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="mt-8">
-              {project.gallery && project.gallery.length > 0 ? (
-                <Gallery
-                  images={project.gallery}
-                  alt={project.title}
-                  video={
-                    project.video
-                      ? {
-                          id: youtubeId(project.video),
-                          poster: project.image ?? project.gallery[0],
-                        }
-                      : undefined
-                  }
-                />
-              ) : project.video ? (
-                <YouTubeEmbed
-                  id={youtubeId(project.video)}
-                  poster={project.image ?? ""}
-                  title={project.title}
-                />
-              ) : project.image ? (
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 700px"
-                    className="object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="aspect-[16/9] w-full rounded-2xl" style={{ background: gradient }} aria-hidden />
-              )}
+      {/* Média : pleine largeur, présentation identique sur tous les projets */}
+      <Reveal delay={0.1}>
+        <div className="mt-8 min-w-0">
+          {project.gallery && project.gallery.length > 0 ? (
+            <Gallery
+              images={project.gallery}
+              alt={project.title}
+              video={
+                project.video
+                  ? {
+                      id: youtubeId(project.video),
+                      poster: project.image ?? project.gallery[0],
+                    }
+                  : undefined
+              }
+            />
+          ) : project.video ? (
+            <YouTubeEmbed
+              id={youtubeId(project.video)}
+              poster={project.image ?? ""}
+              title={project.title}
+            />
+          ) : project.image ? (
+            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(max-width: 1280px) 100vw, 1150px"
+                className="object-cover"
+              />
             </div>
-          </Reveal>
+          ) : (
+            <div className="aspect-[3/2] w-full rounded-2xl" style={{ background: gradient }} aria-hidden />
+          )}
+        </div>
+      </Reveal>
 
+      {/* Description + panneau infos */}
+      <div className="mt-12 grid gap-10 lg:grid-cols-[1.5fr_1fr]">
+        <div className="min-w-0">
           <Reveal delay={0.15}>
-            <div className="prose-scand mt-8 space-y-4">
+            <div className="space-y-4">
               {project.description[l].map((para, i) => (
                 <p key={i} className="text-base leading-relaxed text-foreground/90">
                   {para}
