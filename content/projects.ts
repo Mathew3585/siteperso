@@ -303,6 +303,12 @@ const allProjects: Project[] = [
     image: "/images/projects/hyperwisper/1.png",
     gallery: [
       "/images/projects/hyperwisper/1.png",
+      "/images/projects/hyperwisper/8.png",
+      "/images/projects/hyperwisper/9.png",
+      "/images/projects/hyperwisper/10.png",
+      "/images/projects/hyperwisper/5.png",
+      "/images/projects/hyperwisper/6.png",
+      "/images/projects/hyperwisper/7.png",
       "/images/projects/hyperwisper/2.png",
       "/images/projects/hyperwisper/3.png",
       "/images/projects/hyperwisper/4.png",
