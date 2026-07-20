@@ -108,6 +108,45 @@ export const projects: Project[] = [
     links: [{ label: "torrusvr.com", href: "https://torrusvr.com/immersicase/" }],
   },
   {
+    slug: "ptit-bout-de-lumiere",
+    title: "P'tit Bout de Lumière",
+    year: "2024",
+    categories: ["xr"],
+    role: {
+      fr: "Développeur (optimisation & navigation) chez TorrusVR",
+      en: "Developer (optimization & navigation) at TorrusVR",
+    },
+    summary: {
+      fr: "Expérience VR conçue pour rassurer les enfants chez le dentiste. J'y étais développeur, principalement sur l'optimisation des performances et la navigation du vaisseau.",
+      en: "A VR experience designed to reassure children at the dentist. I worked on it as a developer, mainly on performance optimization and the ship's navigation.",
+    },
+    description: {
+      fr: [
+        "P'tit Bout de Lumière est une expérience en réalité virtuelle qui accompagne les enfants pendant leurs soins dentaires. Plutôt que de subir l'intervention, l'enfant est embarqué dans un voyage qui capte son attention ailleurs. Le projet a été mené sur un contrat client chez TorrusVR, et s'est étalé sur une longue durée.",
+        "Ma principale mission a été l'optimisation. En VR, la contrainte est bien plus dure que sur écran : il faut tenir une fréquence d'images élevée et parfaitement stable, sinon l'immersion casse et l'inconfort arrive vite. Sur ce projet, l'enjeu était encore plus fort, puisque le public visé est un enfant déjà en situation de stress. J'ai donc mené de grosses passes d'optimisation pour faire tenir l'expérience dans le budget de performance du matériel.",
+        "J'ai également travaillé sur la navigation et le pathfinding du vaisseau, afin que ses déplacements restent cohérents et lisibles pour l'enfant tout au long du parcours.",
+        "En complément du développement, j'ai réalisé quelques modèles 3D pour le projet, ce qui m'a permis de toucher aussi à la partie artistique.",
+      ],
+      en: [
+        "P'tit Bout de Lumière is a virtual reality experience that supports children through their dental treatment. Rather than enduring the procedure, the child is taken on a journey that draws their attention elsewhere. The project ran as a client contract at TorrusVR over a long period.",
+        "My main assignment was optimization. In VR the constraint is far tougher than on a screen: you have to hold a high and perfectly stable framerate, otherwise immersion breaks and discomfort sets in quickly. Here the stakes were even higher, since the audience is a child already under stress. I ran major optimization passes to fit the experience within the hardware's performance budget.",
+        "I also worked on the ship's navigation and pathfinding, so its movements stayed coherent and readable for the child throughout the journey.",
+        "Alongside development, I produced a few 3D models for the project, which let me contribute to the artistic side as well.",
+      ],
+    },
+    stack: ["Unity", "C#", "VR", "Optimisation", "Pathfinding", "Modélisation 3D"],
+    image: "/images/projects/ptit-bout-de-lumiere/1.jpg",
+    video: "https://youtu.be/IQ8c6_5lLik",
+    gallery: [
+      "/images/projects/ptit-bout-de-lumiere/1.jpg",
+      "/images/projects/ptit-bout-de-lumiere/2.jpg",
+      "/images/projects/ptit-bout-de-lumiere/3.jpg",
+      "/images/projects/ptit-bout-de-lumiere/4.jpg",
+      "/images/projects/ptit-bout-de-lumiere/5.jpg",
+    ],
+    links: [{ label: "Voir la présentation", href: "https://youtu.be/IQ8c6_5lLik" }],
+  },
+  {
     slug: "underwater-vr",
     title: "UnderWater",
     year: "2023",
