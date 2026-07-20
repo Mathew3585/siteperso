@@ -265,7 +265,6 @@ export const projects: Project[] = [
       "/images/projects/streamdeck-9.jpg",
       "/images/projects/streamdeck-10.jpg",
       "/images/projects/streamdeck-11.jpg",
-      "/images/projects/streamdeck-12.jpg",
       "/images/projects/streamdeck-13.jpg",
     ],
   },
