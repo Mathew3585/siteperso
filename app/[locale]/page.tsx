@@ -8,6 +8,7 @@ import { Reveal, Stagger, StaggerItem } from "@/components/reveal";
 import { ProjectCard } from "@/components/project-card";
 import { Hero } from "@/components/hero";
 import { SpotlightCard } from "@/components/spotlight-card";
+import { CtaCard } from "@/components/cta-card";
 
 export default async function HomePage({
   params,
@@ -85,17 +86,12 @@ export default async function HomePage({
       <section className="py-16 sm:py-24">
         <Container>
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-surface px-6 py-12 text-center sm:px-12 sm:py-16">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -bottom-24 left-1/2 h-[300px] w-[500px] -translate-x-1/2 rounded-full opacity-25 blur-3xl"
-                style={{ background: "radial-gradient(circle, var(--accent) 0%, transparent 70%)" }}
-              />
-              <h2 className="relative mx-auto max-w-2xl font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+            <CtaCard>
+              <h2 className="mx-auto max-w-2xl font-display text-3xl font-semibold tracking-tight sm:text-4xl">
                 {dict.homeCta.title}
               </h2>
-              <p className="relative mx-auto mt-4 max-w-xl text-muted">{dict.homeCta.subtitle}</p>
-              <div className="relative mt-8 flex flex-wrap justify-center gap-3">
+              <p className="mx-auto mt-4 max-w-xl text-muted">{dict.homeCta.subtitle}</p>
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <ButtonLink href={`/${l}/contact`}>
                   {dict.cta.contact}
                 </ButtonLink>
@@ -103,7 +99,7 @@ export default async function HomePage({
                   {dict.nav.about}
                 </ButtonLink>
               </div>
-            </div>
+            </CtaCard>
           </Reveal>
         </Container>
       </section>
