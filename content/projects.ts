@@ -372,6 +372,7 @@ const allProjects: Project[] = [
     },
     stack: ["Rust", "Tauri 2", "whisper.cpp", "Vulkan", "React", "TypeScript"],
     image: "/images/projects/hyperwisper/1.png",
+    videoFile: "/images/projects/hyperwisper/teaser.mp4",
     gallery: [
       "/images/projects/hyperwisper/1.png",
       "/images/projects/hyperwisper/8.png",
