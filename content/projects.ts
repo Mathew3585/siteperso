@@ -301,6 +301,7 @@ const allProjects: Project[] = [
     },
     stack: ["Rust", "Tauri 2", "yt-dlp", "ffmpeg", "Real-ESRGAN", "NVENC"],
     image: "/images/projects/yoink/1.png",
+    videoFile: "/images/projects/yoink/teaser.mp4",
     gallery: [
       "/images/projects/yoink/1.png",
       "/images/projects/yoink/2.png",
