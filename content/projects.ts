@@ -274,6 +274,41 @@ const allProjects: Project[] = [
     ],
   },
   {
+    slug: "yoink",
+    title: "Yoink",
+    year: "2026",
+    categories: ["app"],
+    role: { fr: "Projet open source, développé seul", en: "Open source project, built solo" },
+    summary: {
+      fr: "Un téléchargeur de vidéos pour Windows : on colle un lien, on choisit le format et la qualité, on récupère le fichier. yt-dlp et ffmpeg embarqués, sans ligne de commande. Open source sous licence MIT.",
+      en: "A video downloader for Windows: paste a link, pick the format and quality, get the file. yt-dlp and ffmpeg bundled in, no command line. Open source under the MIT license.",
+    },
+    description: {
+      fr: [
+        "Yoink est une application de bureau qui télécharge des vidéos et en extrait l'audio depuis les plateformes en ligne. Des outils comme yt-dlp et ffmpeg sont très puissants mais s'utilisent en ligne de commande, ce qui les rend inaccessibles au grand public. Yoink les embarque directement dans l'application et les pilote derrière une interface simple : on colle un lien, on choisit, on télécharge.",
+        "L'application gère de nombreux formats vidéo (MP4, MKV, WEBM, MOV) et audio (MP3, M4A, OPUS, FLAC, WAV), avec un choix de qualité jusqu'à la 4K. Le suivi de progression est en temps réel, avec la vitesse et le temps restant estimé.",
+        "Côté performance, le téléchargement est découpé en plusieurs fragments téléchargés en parallèle, jusqu'à 16 flux simultanés, ce qui contourne le bridage de bande passante appliqué par les plateformes et accélère nettement les gros fichiers. La conversion de codec peut s'appuyer sur l'encodage GPU NVIDIA NVENC pour aller plus vite.",
+        "J'ai aussi intégré un upscaling par IA via Real-ESRGAN, qui agrandit une vidéo en 2x ou 4x tout en préservant les détails, le tout en local grâce à Vulkan. L'application propose un historique local avec vignettes et métadonnées, des thèmes clair et sombre, et aucune publicité, aucun compte, aucune télémétrie.",
+        "Techniquement, le cœur est écrit en Rust avec Tauri 2, et l'interface en JavaScript, HTML et CSS bundlés avec Vite. Le code est publié sur GitHub sous licence MIT.",
+      ],
+      en: [
+        "Yoink is a desktop application that downloads videos and extracts audio from online platforms. Tools like yt-dlp and ffmpeg are extremely powerful but run on the command line, which puts them out of reach for most people. Yoink bundles them directly into the app and drives them behind a simple interface: paste a link, choose, download.",
+        "It handles many video formats (MP4, MKV, WEBM, MOV) and audio formats (MP3, M4A, OPUS, FLAC, WAV), with quality options up to 4K. Progress tracking is real-time, with speed and estimated time remaining.",
+        "On performance, downloads are split into several fragments fetched in parallel, up to 16 concurrent streams, which sidesteps the bandwidth throttling platforms apply and noticeably speeds up large files. Codec conversion can rely on NVIDIA NVENC GPU encoding to go faster.",
+        "I also integrated AI upscaling through Real-ESRGAN, which enlarges a video 2x or 4x while preserving detail, all locally thanks to Vulkan. The app keeps a local history with thumbnails and metadata, offers light and dark themes, and has no ads, no account and no telemetry.",
+        "Technically the core is written in Rust with Tauri 2, and the interface in JavaScript, HTML and CSS bundled with Vite. The code is on GitHub under the MIT license.",
+      ],
+    },
+    stack: ["Rust", "Tauri 2", "yt-dlp", "ffmpeg", "Real-ESRGAN", "NVENC"],
+    image: "/images/projects/yoink/1.png",
+    gallery: [
+      "/images/projects/yoink/1.png",
+      "/images/projects/yoink/2.png",
+      "/images/projects/yoink/3.png",
+    ],
+    links: [{ label: "Code source sur GitHub", href: "https://github.com/Mathew3585/yoink" }],
+  },
+  {
     slug: "basilic",
     title: "Basilic",
     year: "2025",
